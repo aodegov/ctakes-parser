@@ -8,7 +8,7 @@ using word = Microsoft.Office.Interop.Word;
 
 namespace cTakesXMLParser
 {
-    class FilesController
+    class FilesHelper
     {
 
         public static void ConvertToTxt(string input_file, string input_notes_folder, string new_file_txt)

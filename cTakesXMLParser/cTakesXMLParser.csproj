@@ -64,7 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConsoleSpinner.cs" />
-    <Compile Include="FilesController.cs" />
+    <Compile Include="FilesHelper.cs" />
     <Compile Include="LogHelper.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Program.cs" />

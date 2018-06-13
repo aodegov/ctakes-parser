@@ -60,7 +60,7 @@ namespace cTakesXMLParser
                                 new_file_txt = Path.GetFileNameWithoutExtension(input_file) + ".txt";
                                 input_file_path = Path.Combine(input_notes_folder, new_file_txt);
 
-                                FilesController.ConvertToTxt(input_file, input_notes_folder, input_file_path);
+                                FilesHelper.ConvertToTxt(input_file, input_notes_folder, input_file_path);
                                 converted_dict_files.Add(new_file_txt, input_dict_files[input_file_name]);
                             }
                         }
