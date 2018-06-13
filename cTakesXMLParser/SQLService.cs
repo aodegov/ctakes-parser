@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace cTakesXMLParser
 {
-    class SQLController
+    class SQLService
     {
         static string conn_string = ConfigurationManager.AppSettings["NotesConnStr"];
 

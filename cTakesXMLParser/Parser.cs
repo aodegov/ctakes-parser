@@ -201,9 +201,9 @@ namespace cTakesXMLParser
 
                             string file_result_txt = Path.GetFileName(output_parsed_file);
                             string file_result_html = Path.GetFileNameWithoutExtension(output_parsed_file) + ".htm";
-                            lst_result = SQLController.ExecuteCompareSQL(lst_SNOMED_Codes);
+                            lst_result = SQLService.ExecuteCompareSQL(lst_SNOMED_Codes);
                             FilesController.CreateHtmlFile(lst_result, input_notes_folder, output_notes_html_folder, file_result_txt, file_result_html, cTakesTextstring, note_id);
-                            SQLController.CreateNoteConditions(lst_result, file_result_html, note_id);
+                            SQLService.CreateNoteConditions(lst_result, file_result_html, note_id);
                         }
                         else
                             Console.WriteLine("cTakes text string is empty");

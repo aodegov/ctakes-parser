@@ -36,7 +36,7 @@ namespace cTakesXMLParser
                 if (!string.IsNullOrEmpty(bypass_umls))
                     RunProcess(bypass_umls, "umlsmock.exe", false);
 
-                input_dict_files = SQLController.GetInputFileNames();
+                input_dict_files = SQLService.GetInputFileNames();
                 converted_dict_files = new Dictionary<string, int>();
 
                 if (input_dict_files != null && input_dict_files.Count > 0)
