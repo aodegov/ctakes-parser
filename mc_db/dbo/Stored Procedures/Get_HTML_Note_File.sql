@@ -10,6 +10,6 @@ BEGIN
 	SET NOCOUNT ON;
 
 	SELECT [output_html_file]
-       FROM [MedNotes].[dbo].[NOTES]
+       FROM [dbo].[NOTES]
 		WHERE [note_id] = @note_id
 END

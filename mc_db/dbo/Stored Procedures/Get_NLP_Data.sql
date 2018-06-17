@@ -28,8 +28,8 @@ BEGIN
 				, nc.[related_start]
 				, nc.[related_end]
 				, nc.[snomed_code]
-			FROM [MedNotes].[dbo].[NOTE_CONDITION] nc
-			INNER JOIN [pics]..[ref_icd10] hcc 
+			FROM [dbo].[NOTE_CONDITION] nc
+			INNER JOIN [$(pics_db)]..[ref_icd10] hcc 
 					ON nc.[condition_source_value] = hcc.[icd10_code] 
 			WHERE nc.[note_id] = @note_id AND [condition_status_flag] != 'U' 
 
@@ -47,8 +47,8 @@ BEGIN
 				, rd.[related_start]
 				, rd.[related_end]
 				, rd.[snomed_code]
-			FROM [MedNotes].[dbo].[REJECTED_DIAGNOSIS] rd
-			INNER JOIN [pics]..[ref_icd10] hcc 
+			FROM [dbo].[REJECTED_DIAGNOSIS] rd
+			INNER JOIN [$(pics_db)]..[ref_icd10] hcc 
 					ON rd.[condition_source_value] = hcc.[icd10_code] 
 			WHERE rd.[note_id] = @note_id 
 

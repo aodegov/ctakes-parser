@@ -14,6 +14,6 @@ BEGIN
 	SELECT DISTINCT
 		 [note_id]
 		,[input_file]
-	FROM [MedNotes].[dbo].[NOTES]
+	FROM [dbo].[NOTES]
 		WHERE [process_date] IS NULL
 END

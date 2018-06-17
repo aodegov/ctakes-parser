@@ -14,15 +14,15 @@ BEGIN
     SELECT
 	                 [icd10_code]
                     ,[icd10_description]
-    FROM [pics]..[ref_icd10]
+    FROM [$(pics_db)]..[ref_icd10]
 		WHERE 
 			[icd10_code] NOT IN (SELECT [condition_source_value] 
-								   FROM [MedNotes].[dbo].[NOTE_CONDITION] 
+								   FROM [dbo].[NOTE_CONDITION] 
 										WHERE [note_id] = @note_id 
 											AND [condition_status_flag] != 'U')
         AND   
             [icd10_code] NOT IN (SELECT [condition_source_value] 
-									FROM [MedNotes].[dbo].[REJECTED_DIAGNOSIS] 
+									FROM [dbo].[REJECTED_DIAGNOSIS] 
 										WHERE [note_id] = @note_id)
         AND 
 			in_cms_ind = 1

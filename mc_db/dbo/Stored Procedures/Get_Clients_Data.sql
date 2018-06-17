@@ -9,5 +9,5 @@ BEGIN
 	SET NOCOUNT ON;
 	SELECT 
 		  DISTINCT client_id, client_name 
-	FROM [pics]..[client]
+	FROM [$(pics_db)]..[client]
 END

@@ -16,7 +16,7 @@ BEGIN
       ,[snomed_description]
       ,[icd10_code]
       ,[icd10_description]
-	FROM [MedNotes].[dbo].[SNOMED_TO_ICD10]
+	FROM [dbo].[SNOMED_TO_ICD10]
 		WHERE 
 				[snomed_code] IN (SELECT lst.[Code] FROM @SNOMED_LST lst)
 			AND

@@ -31,7 +31,7 @@ BEGIN
 		   SELECT * FROM @Result 
 		   WHERE [file] != 0 AND depth = 1
 
-	SELECT @max_id = MAX([note_id]) FROM [MedNotes].[dbo].[NOTES]
+	SELECT @max_id = MAX([note_id]) FROM [dbo].[NOTES]
 
 	DECLARE file_cursor CURSOR FOR   
 			SELECT subdirectory FROM @Result
@@ -45,7 +45,7 @@ BEGIN
 		WHILE @@FETCH_STATUS = 0  
 			BEGIN  
 				SET @max_id += 1;
-				INSERT INTO [MedNotes].[dbo].[NOTES] VALUES (@max_id, @note_type, GetDate(), @provider_id, @person_id, 'N', @file_name, NULL, NULL)
+				INSERT INTO [dbo].[NOTES] VALUES (@max_id, @note_type, GetDate(), @provider_id, @person_id, 'N', @file_name, NULL, NULL)
 						   -- Get the next file.  
 					FETCH NEXT FROM file_cursor   
 					INTO @file_name

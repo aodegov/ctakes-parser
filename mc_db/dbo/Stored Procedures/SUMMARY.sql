@@ -36,29 +36,29 @@ BEGIN
 							+ ',"description":' + '"' + mn_icd.[icd10_description]+ '"'
 							+'}'
 
-						FROM [MedNotes].[dbo].[SNOMED_TO_ICD10] mn_icd
+						FROM dbo.[SNOMED_TO_ICD10] mn_icd
 							INNER JOIN [NOTE_CONDITION] nc ON mn_icd.[icd10_code] = nc.[condition_source_value] 
 								   AND nc.note_id = nt.[note_id] 
 								   AND nc.condition_status_flag = 'A' 
-							LEFT JOIN [MedNotes].[dbo].[V_REF_ICD_HCC_CODE] hcc ON hcc.[icd_code] = mn_icd.[icd10_code] 
+							LEFT JOIN dbo.[V_REF_ICD_HCC_CODE] hcc ON hcc.[icd_code] = mn_icd.[icd10_code] 
 
 						FOR XML PATH(''), TYPE
 					).value('.', 'varchar(max)'), 1, 1, '') + ']') AS InnerData
             INTO #Tmp_Summary
             FROM [NOTES] nt
-	            INNER JOIN [MedNotes].[dbo].[PERSON] ps ON nt.person_id = ps.person_id
-	            LEFT JOIN [MedNotes].[dbo].[PROVIDER] pr ON nt.issued_by_provider_id = pr.provider_id
+	            INNER JOIN dbo.[PERSON] ps ON nt.person_id = ps.person_id
+	            LEFT JOIN dbo.[PROVIDER] pr ON nt.issued_by_provider_id = pr.provider_id
             ORDER BY PersonName 
 
             SELECT [note_id], [condition_status_flag], COUNT([condition_status_flag]) AS cnt
             INTO #Tmp_Valid_Flag
-            FROM [MedNotes].[dbo].[NOTE_CONDITION]
+            FROM dbo.[NOTE_CONDITION]
 	        GROUP BY [note_id], [condition_status_flag]
             ORDER BY [note_id]
 
 			SELECT [note_id], COUNT([note_id]) AS cnt
             INTO #Tmp_Rejected_Flag
-            FROM [MedNotes].[dbo].[REJECTED_DIAGNOSIS]
+            FROM dbo.[REJECTED_DIAGNOSIS]
 	        GROUP BY [note_id]
             ORDER BY [note_id]
 

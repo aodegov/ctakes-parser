@@ -17,8 +17,8 @@ SET NOCOUNT ON;
 		,nc.[related_text]
 		,nc.[related_start]
 		,nc.[related_end]
-    FROM [MedNotes].[dbo].[NOTE_CONDITION] nc
-	INNER JOIN [pics]..[ref_icd10] icd10
+    FROM [dbo].[NOTE_CONDITION] nc
+	INNER JOIN [$(pics_db)]..[ref_icd10] icd10
 		ON icd10.icd10_code = nc.condition_source_value
     WHERE [condition_status_flag] = 'U' 
         AND [note_id] = @note_id

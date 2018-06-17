@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cTakesXMLParser", "cTakesXM
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "mc_db", "mc_db\mc_db.sqlproj", "{3568AACE-CD14-43DF-8F50-E7BAC5A7E942}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "pics_db", "pics_db\pics_db.sqlproj", "{D5C20935-6623-4015-9029-96F9FD6E7C06}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "cdm-db", "external\cdm\cdm-db\cdm-db.sqlproj", "{5B48FB8B-E6C6-4A0E-8A2D-F30856D1B806}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +27,18 @@ Global
 		{3568AACE-CD14-43DF-8F50-E7BAC5A7E942}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3568AACE-CD14-43DF-8F50-E7BAC5A7E942}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3568AACE-CD14-43DF-8F50-E7BAC5A7E942}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D5C20935-6623-4015-9029-96F9FD6E7C06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5C20935-6623-4015-9029-96F9FD6E7C06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5C20935-6623-4015-9029-96F9FD6E7C06}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D5C20935-6623-4015-9029-96F9FD6E7C06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5C20935-6623-4015-9029-96F9FD6E7C06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5C20935-6623-4015-9029-96F9FD6E7C06}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{5B48FB8B-E6C6-4A0E-8A2D-F30856D1B806}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B48FB8B-E6C6-4A0E-8A2D-F30856D1B806}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B48FB8B-E6C6-4A0E-8A2D-F30856D1B806}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{5B48FB8B-E6C6-4A0E-8A2D-F30856D1B806}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B48FB8B-E6C6-4A0E-8A2D-F30856D1B806}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B48FB8B-E6C6-4A0E-8A2D-F30856D1B806}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

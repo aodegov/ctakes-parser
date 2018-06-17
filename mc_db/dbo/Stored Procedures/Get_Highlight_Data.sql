@@ -16,8 +16,8 @@ BEGIN
         , '' AS Nlp_Rejected 
         , nc.[condition_status_flag] As Nlp_flag
 		, nc.[related_text] AS Related_text
-    FROM [MedNotes].[dbo].[NOTE_CONDITION] nc
-    INNER JOIN [pics]..[ref_icd10] hcc 
+    FROM [dbo].[NOTE_CONDITION] nc
+    INNER JOIN [$(pics_db)]..[ref_icd10] hcc 
             ON nc.[condition_source_value] = hcc.[icd10_code] 
     WHERE nc.[note_id] = @note_id 
 
@@ -28,8 +28,8 @@ UNION
             , hcc.[icd10_description] AS Nlp_Rejected
             , '' AS Nlp_flag
 			, '' AS Related_text
-    FROM [MedNotes].[dbo].[REJECTED_DIAGNOSIS] rd
-    INNER JOIN [pics]..[ref_icd10] hcc 
+    FROM [dbo].[REJECTED_DIAGNOSIS] rd
+    INNER JOIN [$(pics_db)]..[ref_icd10] hcc 
             ON rd.[condition_source_value] = hcc.[icd10_code] 
     WHERE rd.[note_id] = @note_id 
 END

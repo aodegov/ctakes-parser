@@ -21,12 +21,12 @@ SET NOCOUNT ON;
 		   ISNULL(ps.gender,'') AS Gender,
 		   ISNULL(ct.concept_name,'Unknown') AS Race,
 		   FORMAT (nt.[note_date], 'd', 'en-US' ) AS NoteDate
-	 FROM [MedNotes].[dbo].[NOTES] AS nt
-		 INNER JOIN [MedNotes].[dbo].[PERSON] AS ps 
+	 FROM [dbo].[NOTES] AS nt
+		 INNER JOIN [dbo].[PERSON] AS ps 
 			ON nt.person_id = ps.person_id
-		 LEFT JOIN [pics]..[provider] AS pd
+		 LEFT JOIN [$(pics_db)]..[provider] AS pd
 			ON nt.issued_by_provider_id = pd.provider_id
-		 LEFT JOIN [Vocabulary]..[concept] AS ct
+		 LEFT JOIN [$(cdm)]..[concept] AS ct
 			ON ps.race_concept_id = ct.concept_id
 	 WHERE nt.[note_id] = @note_id
 

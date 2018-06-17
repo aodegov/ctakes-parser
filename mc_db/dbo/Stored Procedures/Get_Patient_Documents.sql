@@ -14,7 +14,7 @@ BEGIN
 
 	SELECT output_html_file,
 		   FORMAT (process_date, 'd', 'en-US' )
-	FROM  [MedNotes].[dbo].[NOTES]
+	FROM  [dbo].[NOTES]
 	WHERE person_id = @person_id 
 	ORDER BY process_date DESC
 END
