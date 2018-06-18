@@ -22,7 +22,6 @@ namespace cTakesXMLParser
             string output_notes_html_folder = ConfigurationManager.AppSettings["output_notes_html_folder"];
             string bypass_umls = ConfigurationManager.AppSettings["bypass_umls"];
 
-
             string new_file_txt = string.Empty;
             string input_file_name = string.Empty;
             string input_file_path = string.Empty;
@@ -82,7 +81,7 @@ namespace cTakesXMLParser
 
                     if (cTakes_file_entries.Length > 0)
                     {
-                       
+
                         Console.WriteLine("Start the cTakes .xml files processing\r\n\r\nPlease wait.........");
 
                         foreach (string xml_file in cTakes_file_entries)
@@ -95,38 +94,42 @@ namespace cTakesXMLParser
                             }
                         }
 
-                        if (!string.IsNullOrEmpty(bypass_umls))
-                            StopDummyServer("umlsmock");
-
-                        Console.WriteLine("Finish the cTakes .xml files processing");
+                        Console.WriteLine("Finishing the cTakes .xml files processing");
                         Console.WriteLine();
                         Console.WriteLine(new string('-', 70));
                         Console.WriteLine();
-                        Console.WriteLine("THE PROCESS HAS BEEN FINISHED SUCCESSFULLY........");
-                        Console.WriteLine("PRESS ANY KEY TO CLOSE THE PROGRAM.........");
+
+                        PrintFinalMessage("THE PROCESS HAS BEEN FINISHED SUCCESSFULLY........", bypass_umls);
                     }
+
                     else
                     {
-                        Console.WriteLine("NO OUTPUT HTML FILES........");
-                        Console.WriteLine("PRESS ANY KEY TO CLOSE THE PROGRAM........");
+                        PrintFinalMessage("NO OUTPUT HTML FILES........", bypass_umls);
                     }
                 }
                 else
                 {
-                    Console.WriteLine("No files to read.");
+                    PrintFinalMessage("NO FILES TO READ.", bypass_umls);
                 }
             }
             catch (Exception ex)
             {
-                if (!string.IsNullOrEmpty(bypass_umls))
-                    StopDummyServer("umlsmock");
                 LogHelper.SaveLogInfo(string.Format("Exception: {0}", ex.Message), ex.StackTrace);
-                Console.WriteLine(ex.Message);
+                PrintFinalMessage(ex.Message, bypass_umls);
             }
 
-            Console.ReadKey();
+             Console.ReadKey();
 
         }
+
+        private static void PrintFinalMessage(string reason, string bypass_umls)
+        {
+            if (!string.IsNullOrEmpty(bypass_umls))
+                StopDummyServer("umlsmock");
+            Console.WriteLine(reason);
+            Console.WriteLine("PRESS ANY KEY TO CLOSE THE PROGRAM.........");
+        }
+    
 
         private static void RunProcess(string folder, string filename, bool isExitProcess )
         {
@@ -158,6 +161,7 @@ namespace cTakesXMLParser
 
             if (arr_p.Length > 0)
             {
+                arr_p[0].Kill();
                 arr_p[0].Close();
                 arr_p[0].Dispose();
             }
